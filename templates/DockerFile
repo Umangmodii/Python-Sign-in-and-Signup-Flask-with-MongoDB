@@ -1,0 +1,4 @@
+FROM python:3.6
+ADD . /main
+WORKDIR /main
+RUN Pip install 0-r requirements.txt

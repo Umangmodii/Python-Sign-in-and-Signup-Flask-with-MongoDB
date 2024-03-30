@@ -5,12 +5,56 @@ import bcrypt
 app = Flask(__name__)
 app.secret_key = "12345"  # Set a secret key for session management
 
+# Header Part 
+ 
+@app.route("/header", methods=['GET','POST'])
+def header():
+    return render_template('index.html')
+
+@app.route("/", methods=['GET','POST'])
+def index():
+    return render_template('index.html')
+
+#Contact
+
+# Configure MongoDB connection
+client = MongoClient('mongodb://localhost:27017/')
+db = client['Flask_Form']
+contact_collection = db['contact']
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        
+        contact_data = {
+            'name' : name,
+            'email' : email,
+            'message' : message 
+        }
+        
+        contact_collection.insert_one(contact_data)
+        
+        success_message = 'Form submitted successfully!'
+        return render_template('contact.html', success_message=success_message)
+    else:
+        return render_template('contact.html')
+    
+# About Section
+
+@app.route('/about',methods=['GET','POST'])
+def about():
+    
+    return render_template('about.html')
+    
 # Configure MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
 db = client['Flask_Form']
 users_collection = db['Registration']
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/regirstration", methods=['GET', 'POST'])
 def register():
     if request.method == "POST":
         username = request.form.get("username")
@@ -36,7 +80,7 @@ def register():
         alert_class = "alert-success"
         return render_template("login.html", message=message, alert_class=alert_class)
 
-    return render_template("regirstration.html")
+    return render_template('regirstration.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

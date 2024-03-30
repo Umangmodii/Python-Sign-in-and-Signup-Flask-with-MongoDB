@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Add custom CSS styles here */
+        .about-section {
+            padding: 80px 0;
+        }
+        .about-heading {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        .about-content {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section Start Here -->
+
+    {% include ('header.html') %}
+
+    <!-- About Us Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="about-heading text-center mb-4">About Us</h2>
+            <div class="row about-heading text-center">
+                <div class="col">
+                    <p class="about-content">Hello! We are Umang Modi, dedicated to providing high-quality services to our clients.</p>
+                    <p class="about-content">Our mission is to deliver innovative solutions and exceed customer expectations.</p>
+                    <p class="about-content">With a team of experienced professionals, we aim to be a leader in our industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section bg-light">
+        <div class="container">
+            <h2 class="about-heading text-center mb-2">Our Team</h2>
+            <div class="row">
+                <!-- Team member cards can be added here -->
+            </div>
+        </div>
+    </section>
+
+    <br><br>
+
+    <!-- Footer Section Here -->
+
+    {% include ('footer.html') %}
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

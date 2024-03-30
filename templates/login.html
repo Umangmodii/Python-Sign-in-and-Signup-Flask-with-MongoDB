@@ -1,3 +1,4 @@
+<!-- Updated HTML with suggestions -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,14 @@
     <title>Login Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles */
+        .link-forget-password {
+            color: green; /* Red color for emphasis */
+            text-decoration: underline; /* Underline style for links */
+            cursor: pointer; /* Pointer cursor for links */
+        }
+    </style>
 </head>
 <body>
 
@@ -20,12 +29,10 @@
                         <form method="POST" action="/login">
 
                             {% if error %}
-
                             <div class="alert alert-danger" role="alert">
                                 {{ error }}
                             </div>
-                    
-                        {% endif %}
+                            {% endif %}
 
                             <div class="form-group">
                                 <label for="username">Username</label>
@@ -33,9 +40,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">Show</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
                             <button type="submit" class="btn btn-danger">Login</button>
+                          
+                            <a href="/forget-password" class="link-forget-password">Forget your Password</a>
+
                         </form>
                     </div>
                 </div>
@@ -46,5 +65,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <script>
+        // JavaScript for password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.textContent = 'Hide';
+            } else {
